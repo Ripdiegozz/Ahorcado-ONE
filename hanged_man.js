@@ -46,7 +46,7 @@ function escogerPalabraSecreta() {
   return palabra
 }
 
-function verificarLetraClicada(key) {
+function verificarLetraInput(key) {
   if (letras.length < 1 || letras.indexOf(key) < 0) {
     letras.push(key)
     return false
@@ -110,7 +110,7 @@ function ensenarPantallaDeAgregarPalabra() {
 
 function guardarPalabra() {
   
-  let nuevaPalabra = document.getElementById('input-nueva-palavra').value;
+  let nuevaPalabra = document.getElementById('input-nueva-palabra').value;
 
 
   if(nuevaPalabra !== ""){
@@ -145,7 +145,7 @@ function iniciarJuego() {
     let letra = e.key.toUpperCase()
 
     if (letrasIncorrectas.length <= numeroDeErrores) {
-      if (!verificarLetraClicada(e.key) && verificarLetra(e.keyCode)) {
+      if (!verificarLetraInput(e.key) && verificarLetra(e.keyCode)) {
         if (palabraSecreta.includes(letra)) {
           adicionarLetraCorrecta(palabraSecreta.indexOf(letra))
           for (let i = 0; i < palabraSecreta.length; i++) {
@@ -159,7 +159,7 @@ function iniciarJuego() {
         }
 
         else {
-          if (!verificarLetraClicada(e.key) && !verificarVencedor(letra)) return
+          if (!verificarLetraInput(e.key) && !verificarVencedor(letra)) return
           dibujarAhorcado(errores)
           verificarFinJuego(letra)
         }
